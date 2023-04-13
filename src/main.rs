@@ -150,9 +150,18 @@ struct GithubApi {
 
 fn check_env_file() {
     if env::var("TWITCH_BOT_USERNAME").is_err() {
-        warn!("Couldn't load chat credentials from .env - continuing without connecting to chat.");
-        warn!(
-            "Hint: rename env.sample to .env and edit it with your login information - see README"
-        );
+        // If env file doesn't exist, attempt to load it from the CONFIG_DIR
+        match env::var("CONFIG_DIR") {
+            Ok(p) => {
+                let config_path: PathBuf = p.into();
+                if let Err(_) = dotenv::from_path(config_path) {
+                    warn!("Unable to find .env file in CONFIG_DIR");
+                }
+            }
+            Err(_) => {
+                warn!("Couldn't load chat credentials from .env - continuing without connecting to chat.");
+                warn!("Hint: rename .env.sample to .env and edit it with your login information - see README");
+            }
+        };
     };
 }
