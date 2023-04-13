@@ -102,7 +102,7 @@ cp config.sample.json config.json
 
 ### Sample config.json
 
-```json
+```jsonc
 {
   "user": { 
     "id": null,                                     // Leave ID null, this is for future use.
