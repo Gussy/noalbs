@@ -299,7 +299,27 @@ Nimble must have [API access enabled](https://wmspanel.com/nimble/api) and be co
 > Switches on low bitrate or high RTT (high RTT seems to be a more accurate way of determining if the stream is bad with this)
 You can change the high RTT trigger value inside config.json
 
----
+#### Restreamer
+
+```json
+  "streamServer": {
+    "type": "Restreamer",
+    "baseUrl": "http://localhost:8080",
+    "username": "admin",
+    "password": "",
+    "channel": "restreamer-ui:ingest:..."
+  },
+```
+
+The channel id can be found in the "Process Report" for a Restreamer channel. Use the full channel id including the `restreamer-ui:ingest:` or `restreamer-ui:egress:` section.
+
+```jsonc
+// ...
+"process": {
+    "id": "restreamer-ui:ingest:d7513b68-2f72-4acb-9e5b-c87e023fa80a",
+    // ...
+}
+```
 
 #### Using SLS (SRT-LIVE-SERVER)
 
@@ -356,8 +376,6 @@ Below is an example when used with a BelaBox Reciever:
 ![image](https://user-images.githubusercontent.com/1740542/147401054-9b99d8ea-4388-441d-a965-4e0924de30e2.png)
 
 Remember this is just an example, your ports and streamid may differ.
-
----
 
 #### Using BELABOX cloud
 
