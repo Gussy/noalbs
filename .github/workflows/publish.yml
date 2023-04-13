@@ -22,5 +22,4 @@ jobs:
       - name: Build the noalbs Docker image
         run: |
           docker build . --tag ghcr.io/gussy/noalbs:latest
-          docker run ghcr.io/gussy/noalbs:latest
           docker push ghcr.io/gussy/noalbs:latest
