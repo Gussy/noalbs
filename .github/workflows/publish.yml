@@ -19,7 +19,19 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build the noalbs Docker image
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      # GHCR doesn't allow uppercase in package names
+      - name: Downcase repo name
         run: |
-          docker build . --tag ghcr.io/gussy/noalbs:latest
-          docker push ghcr.io/gussy/noalbs:latest
+          echo "repo_lower=${GITHUB_REPOSITORY,,}" >>${GITHUB_ENV}
+
+      - name: Build and push
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          push: true
+          tags: "ghcr.io/${{ env.repo_lower }}:latest"
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
