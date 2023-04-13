@@ -42,7 +42,7 @@ impl WsHandler {
 
         let client = WsClient {
             token: None,
-            tx_chan: tx,
+            _tx_chan: tx,
             user: None,
         };
 
