@@ -222,8 +222,6 @@ impl RestreamerAPI {
             return Err(Box::new(APIError("incorrect auth method".into())));
         }
 
-        tracing::info!("got jwt tokens");
-
         Ok(())
     }
 

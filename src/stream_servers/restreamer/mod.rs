@@ -3,7 +3,7 @@ mod api_v3;
 use api_v3::{Progress, RestreamerAPI};
 use async_trait::async_trait;
 use serde::{Deserialize, Serialize};
-use tracing::{error, info, trace};
+use tracing::{error, trace};
 
 use super::{Bsl, StreamServersCommands, SwitchLogic};
 use crate::switcher::{SwitchType, Triggers};
@@ -51,7 +51,6 @@ impl Restreamer {
         };
 
         let progress = process.state.unwrap().progress;
-        info!("Bitrate = {}", progress.bitrate_kbit);
         trace!("{:#?}", progress);
 
         Some(progress)
