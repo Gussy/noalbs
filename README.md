@@ -80,13 +80,25 @@ You can also enable/disable certain features from chat, see below:
 
 ## Configure NOALBS
 
-Open the `.env` file. If you have a custom Twitch account created for a bot fill in your Twitch Account bot username and oauth.
+Copy the `.env.sample` file to create a new `.env` file with:
+
+```shell
+cp .env.sample .env
+```
+
+If you have a custom Twitch account created for a bot fill in your Twitch Account bot username and oauth.
 
 Use <https://twitchapps.com/tmi> to get your oauth from Twitch.
 
 > We recommend using your Twitch BOT account for this, but if you do not have a Twitch Bot account just use your Main Twitch Account.
 
 The `config.json` file holds all the user configurations.
+
+Copy the `config.sample.json` file to create a new `config.json` file with:
+
+```shell
+cp config.sample.json config.json
+```
 
 ### Sample config.json
 
