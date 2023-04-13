@@ -437,7 +437,7 @@ Otherwise here is a Windows version of NGINX+RTMP Server
 
 Using the default config where the server is listening on port `1935` and the name of the application in NGINX is `publish`;
 
-#### Example config:
+#### Example config
 
 ```nginx
 rtmp {
